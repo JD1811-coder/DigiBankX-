@@ -15,9 +15,13 @@ if (isset($_POST['open_account'])) {
     $client_id = $_SESSION['client_id'];
 
     // Validate account holder name (only letters allowed)
-    if (!preg_match("/^[a-zA-Z ]+$/", $acc_name)) {
-        $err = "Account Holder Name should only contain letters.";
-    }
+    // if (!preg_match("/^[a-zA-Z ]+$/", $acc_name)) {
+    //     $err = "Account Holder Name should only contain letters.";
+    // }
+
+    if ($DEMO_BREAK['acc_name_validation'] && !preg_match("/^[a-zA-Z ]+$/", $acc_name)) {
+    $err = "Account Holder Name should only contain letters.";
+}
 
     // Validate account type selection
     if ($acc_type == "Select Any iBank Account types" || empty($acc_type)) {
