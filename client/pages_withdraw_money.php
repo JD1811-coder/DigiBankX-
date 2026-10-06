@@ -63,12 +63,12 @@ if ($transaction_amt <= 0) {
         $stmt->close();
 
         // Insert notification
-        $notification_details = "$client_name Has Withdrawn Rs. $transaction_amt From Bank Account $account_number";
-        $notification = "INSERT INTO iB_notifications (notification_details) VALUES (?)";
-        $stmt = $mysqli->prepare($notification);
-        $stmt->bind_param('s', $notification_details);
-        $stmt->execute();
-        $stmt->close();
+        // $notification_details = "$client_name Has Withdrawn Rs. $transaction_amt From Bank Account $account_number";
+        // $notification = "INSERT INTO iB_notifications (notification_details) VALUES (?)";
+        // $stmt = $mysqli->prepare($notification);
+        // $stmt->bind_param('s', $notification_details);
+        // $stmt->execute();
+        // $stmt->close();
 
         // Success message
         $success = "Funds Withdrawn Successfully!";
