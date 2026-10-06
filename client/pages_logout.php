@@ -1,16 +1,17 @@
 <?php
-session_start();
-
-// Unset all session variables
-unset($_SESSION['client_id']);
-session_destroy();
-
-// Destroy cookies
-if (isset($_COOKIE['client_id'])) {
-    setcookie('client_id', '', time() - 3600, "/"); // Expire the cookie by setting past time
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 
-// Redirect to login or homepage
-header("Location: pages_client_index.php");
-exit;
-?>
+// Only logout if explicitly requested with ?confirm=true
+if (isset($_GET['confirm']) && $_GET['confirm'] === 'true') {
+    unset($_SESSION['client_id']);
+    unset($_SESSION['name']);
+    session_destroy();
+    header("Location: pages_client_index.php");
+    exit();
+}
+
+// If an automated scanner hits this endpoint without ?confirm=true, keep session safe
+header("Location: pages_dashboard.php");
+exit();
