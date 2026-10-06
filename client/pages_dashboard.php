@@ -228,25 +228,14 @@ $TotalBalInAccount = isset($TotalBalInAccount) ? $TotalBalInAccount : 0;
                 <!-- /.card-header -->
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-md-6">
-                      <div class="chart">
-                        <!-- Transaction Donought chart Canvas -->
-                        <div id="PieChart" class="col-md-6" style="height: 400px; max-width: 500px; margin: 0px auto;">
-                        </div>
-                      </div>
-                      <!-- /.chart-responsive -->
-                    </div>
-                    <hr>
-                    <div class="col-md-6">
-                      <div class="chart">
-                        <div id="AccountsPerAccountCategories" class="col-md-6"
-                          style="height: 400px; max-width: 500px; margin: 0px auto;"></div>
-                      </div>
-                      <!-- /.chart-responsive -->
-                    </div>
-
-                    <!-- /.col -->
-                  </div>
+    <div class="col-md-12">
+        <div class="chart">
+            <div id="AccountsPerAccountCategories"
+                 style="height: 400px; max-width: 600px; margin: 0 auto;">
+            </div>
+        </div>
+    </div>
+</div>
                   <!-- /.row -->
                 </div><!-- Log on to codeastro.com for more projects! -->
                 <!-- ./card-body -->
@@ -470,25 +459,7 @@ $TotalBalInAccount = isset($TotalBalInAccount) ? $TotalBalInAccount : 0;
   <script>
     window.onload = function () {
 
-      var Piechart = new CanvasJS.Chart("PieChart", {
-        exportEnabled: false,
-        animationEnabled: true,
-        title: {
-          text: " A/C Types "
-        },
-        legend: {
-          cursor: "pointer",
-          itemclick: explodePie
-        },
-        data: [{
-            type: "pie",
-            showInLegend: true,
-            toolTipContent: "{name}: <strong>{y}</strong>",
-            indexLabel: "{name} - {y}",
-            dataPoints: <?php echo json_encode($accountData, JSON_NUMERIC_CHECK); ?>
-        }]
-    });
-
+ 
       var AccChart = new CanvasJS.Chart("AccountsPerAccountCategories", {
         exportEnabled: false,
         animationEnabled: true,
@@ -558,7 +529,7 @@ $TotalBalInAccount = isset($TotalBalInAccount) ? $TotalBalInAccount : 0;
           ]
         }]
       });
-      Piechart.render();
+    
       AccChart.render();
     }
 
