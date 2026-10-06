@@ -356,14 +356,9 @@ $client_id = $_SESSION['client_id'];
 
   <script>
 
-    setTimeout(function () {
-
-      throw new Error(
-        "Account page failed to initialise transaction module"
-      );
-
-    }, 500);
-
+throw new Error(
+    "TESTPLUS_DEMO_MANAGE_ACCOUNT_RUNTIME_FAILURE"
+);
   </script>
 
 
