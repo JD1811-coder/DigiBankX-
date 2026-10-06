@@ -5,11 +5,6 @@ include('conf/checklogin.php');
 check_login();
 $client_id = $_SESSION['client_id'];
 
-// --- DEMO TOGGLES: flip to false to intentionally re-introduce a known validation gap for a live demo ---
-$DEMO_BREAK = [
-    'acc_name_validation' => true,   // true = validation ON (normal). false = OFF (bug active).
-];
-
 if (isset($_POST['open_account'])) {
     $acc_name = trim($_POST['acc_name']);
     $account_number = $_POST['account_number'];
@@ -20,7 +15,7 @@ if (isset($_POST['open_account'])) {
     $client_id = $_SESSION['client_id'];
 
     // Validate account holder name (only letters allowed)
-    if ($DEMO_BREAK['acc_name_validation'] && !preg_match("/^[a-zA-Z ]+$/", $acc_name)) {
+    if (!preg_match("/^[a-zA-Z ]+$/", $acc_name)) {
         $err = "Account Holder Name should only contain letters.";
     }
 
