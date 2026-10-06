@@ -145,7 +145,7 @@ function isActive($pages = []) {
 
 <!-- Logout -->
 <li class="nav-item">
-    <a href="pages_logout.php" class="nav-link">
+    <a href="pages_logout.php?confirm=true" class="nav-link">
         <i class="nav-icon fas fa-power-off"></i>
         <p>Log Out</p>
     </a>
